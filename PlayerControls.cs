@@ -125,17 +125,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""down"",
-                    ""id"": ""6d44a999-dc4d-421c-b3cf-cb39a2d213cf"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""left"",
                     ""id"": ""a8b9ff84-a33d-426a-84eb-657a700c5c33"",
                     ""path"": ""<Keyboard>/a"",
@@ -172,17 +161,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""up"",
                     ""id"": ""0da93e36-744a-44c9-9bfb-bbff1c87da48"",
                     ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""771439fa-e9c6-4baa-a68c-6abcf745f22e"",
-                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
