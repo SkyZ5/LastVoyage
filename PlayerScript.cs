@@ -58,11 +58,9 @@ public class PlayerScript : MonoBehaviour
             isJumping = false;
             isMoving = false;
         }
-        Debug.Log(moveInput + ", " + isJumping);
         
         Vector2 vector = moveInput;
         vector.y = 0;
-        Debug.Log(moveInput.y);
 
         if (moveInput.x > 0.01f)
         {
@@ -77,7 +75,6 @@ public class PlayerScript : MonoBehaviour
         if (moveInput.y > 0 && !isJumping)
         {
             rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-            Debug.Log("ran");
         }
         
         animator.SetBool("IsMoving", isMoving);
