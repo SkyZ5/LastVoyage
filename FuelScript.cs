@@ -11,18 +11,25 @@ public class FuelScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        fuel = 100;    
+        fuel = 100;
+        text1.SetText("" + fuel);
+        text2.SetText("Fuel Remaining: " + fuel);
     }
 
     // Update is called once per frame
     void Update()
     {
-        text1.SetText("" + fuel);
-        text2.SetText("Fuel Remaining: " + fuel);
     }
     public void endDay()
     {
         int random = Random.Range(1, 5);
+        text2.SetText("Fuel Remaining: " + fuel + " - " + random);
         fuel -= random;
     }
+    public void nextDay()
+    {
+        text1.SetText("" + fuel);
+        text2.SetText("Fuel Remaining: " + fuel);
+    }
+
 }

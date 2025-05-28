@@ -1,24 +1,17 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem;
 
-public class CockpitScript : MonoBehaviour
+public class ConsoleScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private BoxCollider2D BoxCollider;
     private SpriteRenderer spriteRenderer;
     private ButtonControl buttonControl;
-    public DayTextScript text;
-    public DayGUIScript DayGUI;
-    public FuelScript Fuel;
-    public FoodScript Food;
     private bool entered;
-    public int day = 1;
-    private bool GUIEnabled;
     void Start()
     {
-        
+
         BoxCollider = GetComponent<BoxCollider2D>();
         buttonControl = new ButtonControl();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -29,19 +22,15 @@ public class CockpitScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GUIEnabled = DayGUI.isGUI();
-        if (Keyboard.current.eKey.isPressed && entered && !GUIEnabled)
+        if (Keyboard.current.eKey.isPressed && entered)
         {
-            day++;
-            text.changeText();
-            DayGUI.enableGUI();
-            Fuel.endDay();
-            Food.endDay();
+            Debug.Log("AAAAAAAAAAAAA");
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("ran");
         spriteRenderer.enabled = true;
         entered = true;
 
@@ -50,9 +39,5 @@ public class CockpitScript : MonoBehaviour
     {
         spriteRenderer.enabled = false;
         entered = false;
-    }
-    public int getDays()
-    { 
-        return day; 
     }
 }

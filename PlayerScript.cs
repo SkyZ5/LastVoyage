@@ -10,12 +10,14 @@ public class PlayerScript : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public float jumpSpeed = 3f;
+    public DayGUIScript DayGUI;
 
     private PlayerControls controls;
     private Vector2 moveInput;
     private Animator animator;
     private Vector2 previousPosition;
     private SpriteRenderer spriteRenderer;
+    private bool GUIEnabled;
 
     private void Awake()
     {
@@ -40,44 +42,48 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bool isJumping = false;
-        bool isMoving = false;
-        Vector2 currentPosition = rb.position;
-
-        if (previousPosition != currentPosition)
+        GUIEnabled = DayGUI.isGUI();
+        if (!GUIEnabled)
         {
-            isMoving = true;
-            if (previousPosition.y != currentPosition.y)
+            bool isJumping = false;
+            bool isMoving = false;
+            Vector2 currentPosition = rb.position;
+
+            if (previousPosition != currentPosition)
             {
-                isJumping = true;
+                isMoving = true;
+                if (previousPosition.y != currentPosition.y)
+                {
+                    isJumping = true;
+                }
+                previousPosition = currentPosition;
             }
-            previousPosition = currentPosition;
-        }
-        else
-        {
-            isJumping = false;
-            isMoving = false;
-        }
-        
-        Vector2 vector = moveInput;
-        vector.y = 0;
+            else
+            {
+                isJumping = false;
+                isMoving = false;
+            }
 
-        if (moveInput.x > 0.01f)
-        {
-            spriteRenderer.flipX = false; // Facing right
-        }
-        else if (moveInput.x < -0.01f)
-        {
-            spriteRenderer.flipX = true;  // Facing left
-        }
+            Vector2 vector = moveInput;
+            vector.y = 0;
 
-        rb.transform.position = rb.position + vector * moveSpeed * Time.fixedDeltaTime;
-        if (moveInput.y > 0 && !isJumping)
-        {
-            rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+            if (moveInput.x > 0.01f)
+            {
+                spriteRenderer.flipX = false; // Facing right
+            }
+            else if (moveInput.x < -0.01f)
+            {
+                spriteRenderer.flipX = true;  // Facing left
+            }
+
+            rb.transform.position = rb.position + vector * moveSpeed * Time.fixedDeltaTime;
+            if (moveInput.y > 0 && !isJumping)
+            {
+                rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+            }
+
+            animator.SetBool("IsMoving", isMoving);
+            animator.SetBool("IsJumping", isJumping);
         }
-        
-        animator.SetBool("IsMoving", isMoving);
-        animator.SetBool("IsJumping", isJumping);
     }
 }
