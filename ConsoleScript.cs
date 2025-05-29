@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class ConsoleScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public ConsoleGUIScript console;
     private BoxCollider2D BoxCollider;
     private SpriteRenderer spriteRenderer;
     private ButtonControl buttonControl;
@@ -25,6 +26,7 @@ public class ConsoleScript : MonoBehaviour
         if (Keyboard.current.eKey.isPressed && entered)
         {
             Debug.Log("AAAAAAAAAAAAA");
+            console.enableGUI();
         }
     }
 
