@@ -20,9 +20,9 @@ public class DayTextScript : MonoBehaviour
         
     }
 
-    public void changeText()
+    public void changeText(int input)
     {
-        day++;
+        day += input;
         text.SetText(" Day: " + day);
     }
 }

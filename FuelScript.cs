@@ -31,5 +31,15 @@ public class FuelScript : MonoBehaviour
         text1.SetText("" + fuel);
         text2.SetText("Fuel Remaining: " + fuel);
     }
+    public void addFuel(int input)
+    {
+        fuel += input;
+        nextDay();
+    }
+    public void subtractFuel(int input)
+    {
+        fuel -= input;
+        nextDay();
+    }
 
 }

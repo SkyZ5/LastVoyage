@@ -33,7 +33,7 @@ public class CockpitScript : MonoBehaviour
         if (Keyboard.current.eKey.isPressed && entered && !GUIEnabled)
         {
             day++;
-            text.changeText();
+            text.changeText(1);
             DayGUI.enableGUI();
             Fuel.endDay();
             Food.endDay();

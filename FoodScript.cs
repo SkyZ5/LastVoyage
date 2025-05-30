@@ -31,4 +31,14 @@ public class FoodScript : MonoBehaviour
         text1.SetText("" + food);
         text2.SetText("Food Remaining: " + food);
     }
+    public void addFood(int input)
+    {
+        food += input;
+        nextDay();
+    }
+    public void subtractFood(int input)
+    {
+        food -= input;
+        nextDay();
+    }
 }

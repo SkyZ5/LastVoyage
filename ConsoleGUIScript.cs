@@ -14,6 +14,8 @@ public class ConsoleGUIScript : MonoBehaviour
     public TMP_Text fuel;
     public TMP_Text error;
     public InputField inputField;
+    public DayTextScript day;
+    public MissionGUIScript mission;
     private int days;
     void Start()
     {
@@ -42,7 +44,7 @@ public class ConsoleGUIScript : MonoBehaviour
     {
         GetComponent<Canvas>().enabled = false;
     }
-    void OnInputFieldValueChanged(string input  )
+    void OnInputFieldValueChanged(string input)
     {
         error.SetText("");
         try
@@ -50,12 +52,17 @@ public class ConsoleGUIScript : MonoBehaviour
             Debug.Log(input);
             days = Int32.Parse(input);
             food.SetText("possible food: " + days + " - " + days * 5);
-            fuel.SetText("fuel consumed: " + days * 2);
+            fuel.SetText("fuel consumed: " + days * 2 + " - " + days * 6);
 
         }
         catch 
         {
             error.SetText("NOT A VALID INPUT");
         }
+    }
+    public void continueButton()
+    {
+        day.changeText(days);
+        mission.enableGUI(days);
     }
 }
