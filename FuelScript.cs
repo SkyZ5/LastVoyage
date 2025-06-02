@@ -20,11 +20,11 @@ public class FuelScript : MonoBehaviour
     void Update()
     {
     }
-    public void endDay()
+    public int endDay()
     {
         int random = Random.Range(1, 5);
         text2.SetText("Fuel Remaining: " + fuel + " - " + random);
-        fuel -= random;
+        return random;
     }
     public void nextDay()
     {
@@ -40,6 +40,15 @@ public class FuelScript : MonoBehaviour
     {
         fuel -= input;
         nextDay();
+    }
+    public int getFuel() 
+    {
+        return fuel; 
+    }
+
+    public void setFuel(int input)
+    {
+        fuel = input; 
     }
 
 }

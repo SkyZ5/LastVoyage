@@ -8,9 +8,13 @@ public class DayGUIScript : MonoBehaviour
     public SpriteRenderer SpriteRenderer3;
     public FoodScript Food;
     public FuelScript Fuel;
+    public int lostFood;
+    public int lostFuel;
     public bool GUIEnabled;
     void Start()
     {
+        lostFood = 0; 
+        lostFuel = 0;
         disableGUI();
     }
 
@@ -25,6 +29,9 @@ public class DayGUIScript : MonoBehaviour
     }
     public void enableGUI()
     {
+        lostFuel = Fuel.endDay();
+        lostFood = Food.endDay();
+
         GetComponent<Canvas>().enabled = true;
         SpriteRenderer1.enabled = true;
         SpriteRenderer2.enabled = true;
@@ -36,7 +43,7 @@ public class DayGUIScript : MonoBehaviour
         SpriteRenderer1.enabled = false;
         SpriteRenderer2.enabled = false;
         SpriteRenderer3.enabled = false;
-        Fuel.nextDay();
-        Food.nextDay();
+        Food.subtractFood(lostFood);
+        Fuel.subtractFuel(lostFuel);
     }
 }

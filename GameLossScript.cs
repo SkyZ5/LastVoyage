@@ -1,17 +1,15 @@
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
-public class DayReportScript : MonoBehaviour
+public class GameLossScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public bool GUIEnabled;
-    public TMP_Text story;
-    public TMP_Text effects;
-    public FuelScript fuel;
     public FoodScript food;
+    public FuelScript fuel;
+    public TMP_Text daysText;
+    public DayTextScript day;
+
+    public bool GUIEnabled;
     void Start()
     {
         disableGUI();
@@ -21,6 +19,11 @@ public class DayReportScript : MonoBehaviour
     void Update()
     {
         GUIEnabled = GetComponent<Canvas>().enabled;
+        if (food.getFood() <  0  || fuel.getFuel() < 0)
+        {
+            daysText.SetText("You Survived: " + day.getDay());
+            enableGUI();
+        }
     }
     public bool isGUI()
     {
@@ -33,6 +36,14 @@ public class DayReportScript : MonoBehaviour
     public void disableGUI()
     {
         GetComponent<Canvas>().enabled = false;
+        fuel.setFuel(100);
+        food.setFood(100);
+        day.setDay(1);
+        fuel.nextDay();
+        food.nextDay();
     }
-    
+    public void quitGame()
+    {
+        Application.Quit();
+    }
 }

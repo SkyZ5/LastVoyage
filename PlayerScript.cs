@@ -11,6 +11,11 @@ public class PlayerScript : MonoBehaviour
     public Rigidbody2D rb;
     public float jumpSpeed = 3f;
     public DayGUIScript DayGUI;
+    public ConsoleGUIScript consoleGUI;
+    public MissionGUIScript missionGUI;
+    public DayReportScript dayReport;
+    public GameLossScript gameLoss;
+    public VictoryScript victory;
 
     private PlayerControls controls;
     private Vector2 moveInput;
@@ -42,7 +47,10 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GUIEnabled = DayGUI.isGUI();
+        if (DayGUI.isGUI() || consoleGUI.isGUI() || dayReport.isGUI() || gameLoss.isGUI() || victory.isGUI() || missionGUI.isGUI())
+        {
+            GUIEnabled = true;
+        }
         if (!GUIEnabled)
         {
             bool isJumping = false;

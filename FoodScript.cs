@@ -20,11 +20,11 @@ public class FoodScript : MonoBehaviour
     {
  
     }
-    public void endDay()
+    public int endDay()
     {
         int random = Random.Range(1, 5);
         text2.SetText("Food Remaining: " + food + " - " + random);
-        food -= random;
+        return random;
     }
     public void nextDay()
     {
@@ -41,4 +41,13 @@ public class FoodScript : MonoBehaviour
         food -= input;
         nextDay();
     }
+    public int getFood()
+    {
+        return food;
+    }
+
+    public void setFood(int input) {
+        food = input; 
+    }
+
 }

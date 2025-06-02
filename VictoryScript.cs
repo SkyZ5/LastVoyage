@@ -1,17 +1,11 @@
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class DayReportScript : MonoBehaviour
+public class VictoryScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     public bool GUIEnabled;
-    public TMP_Text story;
-    public TMP_Text effects;
-    public FuelScript fuel;
-    public FoodScript food;
+    public DayTextScript day;
     void Start()
     {
         disableGUI();
@@ -21,6 +15,10 @@ public class DayReportScript : MonoBehaviour
     void Update()
     {
         GUIEnabled = GetComponent<Canvas>().enabled;
+        if (day.getDay() == 200)
+        {
+            enableGUI();
+        }
     }
     public bool isGUI()
     {
@@ -34,5 +32,4 @@ public class DayReportScript : MonoBehaviour
     {
         GetComponent<Canvas>().enabled = false;
     }
-    
 }

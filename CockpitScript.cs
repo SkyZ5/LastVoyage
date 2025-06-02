@@ -35,8 +35,6 @@ public class CockpitScript : MonoBehaviour
             day++;
             text.changeText(1);
             DayGUI.enableGUI();
-            Fuel.endDay();
-            Food.endDay();
         }
     }
 

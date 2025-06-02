@@ -20,6 +20,14 @@ public class DayTextScript : MonoBehaviour
         
     }
 
+    public int getDay() { return day; }
+
+    public void setDay(int day)
+    {
+        this.day = day;
+        text.SetText(" Day: " + day);
+    }
+
     public void changeText(int input)
     {
         day += input;
