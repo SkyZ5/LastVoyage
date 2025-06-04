@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class FuelScript : MonoBehaviour
 {
-    private int fuel;
     public TMP_Text text1;
     public TMP_Text text2;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private int fuel;
+
     void Start()
     {
         fuel = 100;

@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class MissionGUIScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public bool GUIEnabled;
     public TMP_Text food;
     public TMP_Text fuel;
     public FoodScript foodScript;
     public FuelScript fuelScript;
+
     private int foodObtained;
     private int fuelCost;
     void Start()

@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class FoodScript : MonoBehaviour
 {
-    private int food;
     public TMP_Text text1;
     public TMP_Text text2;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private int food;
     void Start()
     {
         food = 100;

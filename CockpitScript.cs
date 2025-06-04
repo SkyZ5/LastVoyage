@@ -5,21 +5,22 @@ using UnityEngine.InputSystem.Controls;
 
 public class CockpitScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private BoxCollider2D BoxCollider;
-    private SpriteRenderer spriteRenderer;
-    private ButtonControl buttonControl;
     public DayTextScript text;
     public DayGUIScript DayGUI;
-    public FuelScript Fuel;
-    public FoodScript Food;
-    private bool entered;
+    public PlayerScript player;
+    public FuelScript fuel;
+    public FoodScript food;
     public int day = 1;
+
+    private bool entered;
     private bool GUIEnabled;
+    private BoxCollider2D boxCollider;
+    private SpriteRenderer spriteRenderer;
+    private ButtonControl buttonControl;
     void Start()
     {
         
-        BoxCollider = GetComponent<BoxCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         buttonControl = new ButtonControl();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
@@ -30,7 +31,7 @@ public class CockpitScript : MonoBehaviour
     void Update()
     {
         GUIEnabled = DayGUI.isGUI();
-        if (Keyboard.current.eKey.isPressed && entered && !GUIEnabled)
+        if (Keyboard.current.eKey.isPressed && entered && !player.isGUIEnabled() && !GUIEnabled)
         {
             day++;
             text.changeText(1);

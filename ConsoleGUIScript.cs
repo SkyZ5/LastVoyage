@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class ConsoleGUIScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public bool GUIEnabled;
     public TMP_Text food;
     public TMP_Text fuel;
@@ -16,6 +15,7 @@ public class ConsoleGUIScript : MonoBehaviour
     public InputField inputField;
     public DayTextScript day;
     public MissionGUIScript mission;
+
     private int days;
     void Start()
     {
@@ -38,10 +38,12 @@ public class ConsoleGUIScript : MonoBehaviour
     }
     public void enableGUI()
     {
+        inputField.enabled = true;
         GetComponent<Canvas>().enabled = true;
     }
     public void disableGUI()
     {
+        inputField.enabled = false;
         GetComponent<Canvas>().enabled = false;
     }
     void OnInputFieldValueChanged(string input)

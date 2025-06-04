@@ -16,13 +16,13 @@ public class PlayerScript : MonoBehaviour
     public DayReportScript dayReport;
     public GameLossScript gameLoss;
     public VictoryScript victory;
+    public bool GUIEnabled;
 
     private PlayerControls controls;
     private Vector2 moveInput;
     private Animator animator;
     private Vector2 previousPosition;
     private SpriteRenderer spriteRenderer;
-    private bool GUIEnabled;
 
     private void Awake()
     {
@@ -50,6 +50,10 @@ public class PlayerScript : MonoBehaviour
         if (DayGUI.isGUI() || consoleGUI.isGUI() || dayReport.isGUI() || gameLoss.isGUI() || victory.isGUI() || missionGUI.isGUI())
         {
             GUIEnabled = true;
+        }
+        else
+        {
+            GUIEnabled = false;
         }
         if (!GUIEnabled)
         {
@@ -93,5 +97,9 @@ public class PlayerScript : MonoBehaviour
             animator.SetBool("IsMoving", isMoving);
             animator.SetBool("IsJumping", isJumping);
         }
+    }
+    public bool isGUIEnabled()
+    {
+        return GUIEnabled;
     }
 }

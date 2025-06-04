@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class DayGUIScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public SpriteRenderer SpriteRenderer1;
-    public SpriteRenderer SpriteRenderer2;
-    public SpriteRenderer SpriteRenderer3;
-    public FoodScript Food;
-    public FuelScript Fuel;
+    public SpriteRenderer spriteRenderer1;
+    public SpriteRenderer spriteRenderer2;
+    public SpriteRenderer spriteRenderer3;
+    public FoodScript food;
+    public FuelScript fuel;
     public int lostFood;
     public int lostFuel;
     public bool GUIEnabled;
@@ -29,21 +28,21 @@ public class DayGUIScript : MonoBehaviour
     }
     public void enableGUI()
     {
-        lostFuel = Fuel.endDay();
-        lostFood = Food.endDay();
+        lostFuel = fuel.endDay();
+        lostFood = food.endDay();
 
         GetComponent<Canvas>().enabled = true;
-        SpriteRenderer1.enabled = true;
-        SpriteRenderer2.enabled = true;
-        SpriteRenderer3.enabled = true;
+        spriteRenderer1.enabled = true;
+        spriteRenderer2.enabled = true;
+        spriteRenderer3.enabled = true;
     }
     public void disableGUI()
     {
         GetComponent<Canvas>().enabled = false;
-        SpriteRenderer1.enabled = false;
-        SpriteRenderer2.enabled = false;
-        SpriteRenderer3.enabled = false;
-        Food.subtractFood(lostFood);
-        Fuel.subtractFuel(lostFuel);
+        spriteRenderer1.enabled = false;
+        spriteRenderer2.enabled = false;
+        spriteRenderer3.enabled = false;
+        food.subtractFood(lostFood);
+        fuel.subtractFuel(lostFuel);
     }
 }

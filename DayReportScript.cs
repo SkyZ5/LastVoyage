@@ -3,13 +3,15 @@ using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class DayReportScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public bool GUIEnabled;
     public TMP_Text story;
     public TMP_Text effects;
+    public GameObject button1;
+    public GameObject button2;
     public FuelScript fuel;
     public FoodScript food;
 
@@ -17,6 +19,8 @@ public class DayReportScript : MonoBehaviour
     void Start()
     {
         disableGUI();
+        button1.SetActive(false);
+        button2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -87,14 +91,18 @@ public class DayReportScript : MonoBehaviour
         else if(random == 14)
         {
             valuesUpdate = unknownSignal();
+            button1.SetActive(true);
         } 
         else if(random == 15)
         {
             valuesUpdate = strangePhenomenon();
+            button2.SetActive(true);
         }
     }
     public void disableGUI()
     {
+        button1.SetActive(false);
+        button2.SetActive(false);
         GetComponent<Canvas>().enabled = false;
     }
 
@@ -103,6 +111,52 @@ public class DayReportScript : MonoBehaviour
         food.addFood(valuesUpdate[0]);
         fuel.addFuel(valuesUpdate[1]);
         disableGUI();
+    }
+    public void exploreButton1()
+    {
+        int random = Random.Range(1, 4);
+        if (random == 1)
+        {
+            valuesUpdate = unknownSignal1();
+        }
+        else if( random == 2)
+        {
+            valuesUpdate = unknownSignal2();
+        }
+        else if(random == 3)
+        {
+            valuesUpdate = unknownSignal3();
+        }
+        else if (random == 4)
+        {
+            valuesUpdate = unknownSignal4();
+        }
+        button1.SetActive(false);
+    }
+    public void exploreButton2()
+    {
+        int random = Random.Range(1, 5);
+        if (random == 1)
+        {
+            valuesUpdate = strangePhenomenon1();
+        }
+        else if (random == 2)
+        {
+            valuesUpdate = strangePhenomenon2();
+        }
+        else if (random == 3)
+        {
+            valuesUpdate = strangePhenomenon3();
+        }
+        else if (random == 4)
+        {
+            valuesUpdate = strangePhenomenon4();
+        }
+        else if (random == 5)
+        {
+            valuesUpdate = strangePhenomenon5();
+        }
+        button2.SetActive(false);
     }
     private int[] quietDay()
     {

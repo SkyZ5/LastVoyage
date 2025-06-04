@@ -3,9 +3,9 @@ using TMPro;
 
 public class DayTextScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private int day;
     public TMP_Text text;
+
+    private int day;
 
     void Start()
     {

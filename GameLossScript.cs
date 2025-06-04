@@ -3,12 +3,10 @@ using TMPro;
 
 public class GameLossScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public FoodScript food;
     public FuelScript fuel;
     public TMP_Text daysText;
     public DayTextScript day;
-
     public bool GUIEnabled;
     void Start()
     {

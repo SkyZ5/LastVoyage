@@ -4,16 +4,16 @@ using UnityEngine.InputSystem;
 
 public class ConsoleScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public ConsoleGUIScript console;
-    private BoxCollider2D BoxCollider;
+
+    private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
     private ButtonControl buttonControl;
     private bool entered;
     void Start()
     {
 
-        BoxCollider = GetComponent<BoxCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         buttonControl = new ButtonControl();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
@@ -25,14 +25,12 @@ public class ConsoleScript : MonoBehaviour
     {
         if (Keyboard.current.eKey.isPressed && entered)
         {
-            Debug.Log("AAAAAAAAAAAAA");
             console.enableGUI();
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("ran");
         spriteRenderer.enabled = true;
         entered = true;
 
