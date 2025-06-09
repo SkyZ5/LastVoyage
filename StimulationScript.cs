@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class EscapeMenu : MonoBehaviour
+public class StimulationScript : MonoBehaviour
 {
-    public bool GUIEnabled; 
+    public bool GUIEnabled;
     void Start()
     {
         disableGUI();
@@ -13,10 +13,7 @@ public class EscapeMenu : MonoBehaviour
     void Update()
     {
         GUIEnabled = GetComponent<Canvas>().enabled;
-        if (Keyboard.current.escapeKey.isPressed)
-        {
-            enableGUI();
-        }
+
     }
     public bool isGUI()
     {
@@ -25,15 +22,6 @@ public class EscapeMenu : MonoBehaviour
     public void enableGUI()
     {
         GetComponent<Canvas>().enabled = true;
-    }
-
-    public void exitButton()
-    {
-        Application.Quit();
-    }
-    public void continueButton()
-    {
-        disableGUI();
     }
     public void disableGUI()
     {

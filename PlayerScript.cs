@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public float jumpSpeed = 3f;
+    public WalkingSoundScript sound;
     public DayGUIScript DayGUI;
     public ConsoleGUIScript consoleGUI;
     public MissionGUIScript missionGUI;
@@ -64,6 +65,7 @@ public class PlayerScript : MonoBehaviour
             if (previousPosition != currentPosition)
             {
                 isMoving = true;
+                sound.playSound();
                 if (previousPosition.y != currentPosition.y)
                 {
                     isJumping = true;
